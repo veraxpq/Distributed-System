@@ -1,0 +1,12 @@
+Firstly, open the terminal, enter into the current directory
+
+Secondly, run the StringReverseServer in terminal by input the below command line:
+java -cp SingleMultiThread.jar Server
+
+Thirdly, open another terminal, and run the Client in the new terminal by input the below command line:
+java -cp SingleMultiThread.jar Client
+
+You can see "Choose one way to run the service: single thread or multi thread." in the console, input "single thread" or
+"multi thread" to request the service.
+
+In the console of Server, we can see the corresponding output.

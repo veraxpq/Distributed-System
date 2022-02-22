@@ -1,0 +1,32 @@
+How to run the server and client codes:
+
+1. If there is no activemq installed in your computer, install activemq first. Otherwise, jump to 2.
+    Install activemq:
+    a) If you have brew installed in your computer:
+       open the terminal, write the command:
+            brew install apache-activemq
+            brew services start activemq
+       And run the command to start activemq:
+            activemq start
+    b) If you don't install brew:
+         1) Download appropriate ActiveMq binary from https://activemq.apache.org/download.html.
+         2) Unzip your bundle.
+         3) Open terminal and, set the terminal path to ActiveMq -> bin
+         4) Write command activemq start
+2. open the terminal, enter into the current directory
+
+3. run the server in terminal by input the below command line:
+    java -cp application-jar-with-dependencies.jar MailboxProducer
+
+    You can see "Enter the message you want to send: " in the console, input the messages to send to subscribers.
+
+4. open another terminal, run the client in terminal by input the below command line:
+    java -cp application-jar-with-dependencies.jar MailboxConsumer
+
+    You can see "Do you want to subscribe the MailBox service? (Please input yes or no)" in the console, input yes to
+    subscribe the service
+
+    You can see " INFO | Successfully connected to tcp://localhost:61616
+                 Do you want to receive message from Mailbox? "
+    Input yes to receive the message
+
