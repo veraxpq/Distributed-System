@@ -1,0 +1,19 @@
+1. open the terminal, enter into the current directory
+
+2. run the TCPServer in terminal by input the below command line:
+java -cp Project1.jar TCPServer 32000(or other port number)
+
+3. open another terminal, run the UDPServer in terminal by input the below command line:
+java -cp Project1.jar UDPServer 32001(or other port number)
+
+4. open another terminal, and run the Client in the new terminal by input the below command line(the port should be the same as previous input):
+java -cp Project1.jar Client localhost 32000 TCP
+Or
+java -cp Project1.jar Client localhost 32001 UDP
+
+5. You can see "Input the command in this format: PUT/GET/DELETE KEY VALUE" in the console
+Input "PUT KEY VALUE", (for example PUT 3 2) to store a key-value pair in the server.
+Input "GET KEY VALUE", (for example GET E) to retrieve the value for the key.
+Input "DELETE KEY", (for example DELETE 3) to delete a key-value pair.
+
+In the console of Server, we can see the corresponding output.

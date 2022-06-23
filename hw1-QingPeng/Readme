@@ -1,0 +1,10 @@
+Firstly, open the terminal, enter into the current directory
+
+Secondly, run the StringReverseServer in terminal by input the below command line:
+java -cp ServerClient.jar StringReverseServer
+
+Thirdly, open another terminal, and run the Client in the new terminal by input the below command line:
+java -cp ServerClient.jar Client
+
+You can see "Please input a string in maximum 80 characters" in the console, so input the string, for example: hi there, I am Qing Peng.
+Then the server will return the transformed string.

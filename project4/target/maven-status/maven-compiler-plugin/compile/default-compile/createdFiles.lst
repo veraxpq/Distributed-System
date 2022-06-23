@@ -1,0 +1,16 @@
+paxos/ProposerImpl.class
+Server/ServerImpl.class
+paxos/Proposer.class
+paxos/Learner.class
+Client/ClientImpl.class
+paxos/ProposalID.class
+Server/MapServiceImpl.class
+paxos/LearnerImpl$Proposal.class
+Server/MapService.class
+paxos/Messenger.class
+paxos/Acceptor.class
+paxos/AcceptorImpl.class
+Client/Client.class
+Server/Server.class
+paxos/MessengerImpl.class
+paxos/LearnerImpl.class

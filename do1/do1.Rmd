@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+q1
+```{r}
+#install.packages("XML")
+library(XML)
+library(data.table)
+
+path <- "/Users/pengqing/"
+xmlFile <- "do1.xml"
+fp <- paste0(path,xmlFile)
+
+xmlObj <- xmlParse(fp, validate=TRUE)
+df <- xmlToDataFrame(fp, stringsAsFactors = FALSE)
+```
+
+q2
+```{r}
+ q2 <- "count(//Visit[@pid='a100'])"
+ q2.apply <- xpathSApply(xmlObj, q2, xmlValue)
+head(q2.apply)
+```
+

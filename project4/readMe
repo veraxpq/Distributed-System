@@ -1,0 +1,67 @@
+Assignment Overview
+
+In this project, I applied the PAXOS algorithm in the map service, to make it fault tolerant. Each server contains three
+roles: proposer, acceptor and learner. The proposer proposes a proposal containing a number of the id, an identifier of
+the server, and the value of the proposal. Then the proposer sends the proposal to all acceptors. The acceptors accepts
+the proposal, and return a promise containing the previously accepted proposal info to the proposer. The proposer count
+the number of promises from acceptors, and if it is more than half of the acceptors, the proposer will send an accept
+message to all the acceptors. After receiving the accept message, the learner sends the accepted message to all the
+learners. When learners receives the messages more than half of the size of the acceptors, then the learner will send
+the final result to the client.
+
+I used RMI to communicate between the client and the servers, and I publish a messenger service to communicate between
+the proposers, acceptors and learners in the servers. To make the acceptors fails at random times, I make a random
+number every time the receivePrepare() method is called, and if the number is even, the acceptor should fail at this
+time. In this way, The client only receives approximately half of the responses from servers, because nearly half of
+the proposals fail.
+
+Technical Impression
+
+This project helps me understand PAXOS algorithm as it offers a method to reach a consensus with fault tolerance, and
+avoid updates the value with out-dated proposals. In the process, I spent a lot of time understanding the PAXOS
+algorithm. At first, I thought only the proposers need to count the accepted responses from acceptors, and when it
+receives more than half the size of the acceptors, the proposal is successfully loaded. However, later I find the leaner
+also count the accepted messages from acceptors, and the learner keeps a records of the proposals it receives. I think
+it makes more sense, and it is even more fault-tolerance.
+
+I had a hard time debugging in this project, because the logic involving three different roles is complicated. And I
+made a mistake in the process, I used an object as the key of a hashmap, and I never re-write the hash() function for
+this hashing process. As a result, I could not retrieve the value from the hashmap as I expected. So I turn the object
+into a string containing the information I need to consider, and use this string as the key of the hashmap, then the
+problem was solved.
+
+How to run the program:
+
+1. open the terminal, enter into the current directory
+
+2. run the Messenger service in terminal by input the below command line:
+java -cp project4.jar paxos.MessengerImpl
+
+3. open another terminal, run the server1 in terminal by input the below command line:
+ java -cp project4.jar Server.ServerImpl 50010
+
+4.open another terminal, run the server2 in terminal by input the below command line:
+ java -cp project4.jar Server.ServerImpl 50011
+
+5. open another terminal, run the server3 in terminal by input the below command line:
+java -cp project4.jar Server.ServerImpl 50012
+
+6. open another terminal, run the server4 in terminal by input the below command line:
+java -cp project4.jar Server.ServerImpl 50013
+
+7. open another terminal, run the server5 in terminal by input the below command line:
+java -cp project4.jar Server.ServerImpl 50014
+
+8. open another terminal, run the client in terminal by input the below command line:
+java -cp project4.jar Client.ClientImpl 50010 50011 50012 50013 50014
+
+5. You can see "Input the command in this format: PUT/GET/DELETE KEY VALUE" in the console
+Input "PUT KEY VALUE", (for example PUT 3 2) to store a key-value pair in the server.
+Input "GET KEY VALUE", (for example GET E) to retrieve the value for the key.
+Input "DELETE KEY", (for example DELETE 3) to delete a key-value pair.
+
+If the request is successfully executed by the server, then the client will receive the result. There is a 50% chance
+that the request will fail.
+
+In the console of Server, we can see the corresponding output, and if the request is failed, there is a log in the
+console.

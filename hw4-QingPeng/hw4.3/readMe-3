@@ -1,0 +1,15 @@
+How to run the server and client codes:
+
+1. open the terminal, enter into the current directory
+
+2. run the server in terminal by input the below command line:
+    java -cp homework4-3.jar Server 50002
+
+3. open another terminal, run the client in terminal by input the below command line:
+    java -cp homework4-3.jar Client localhost 50002
+
+    You can see "Input a list of 10 integers you want to sort to the server:" in the console, input 10 numbers in the
+    console.
+
+    After inputting the 10 number, you can see the sorted numbers in the console.
+

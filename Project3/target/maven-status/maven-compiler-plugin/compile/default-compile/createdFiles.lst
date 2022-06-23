@@ -1,0 +1,10 @@
+server/CoordinatorService.class
+server/MapServiceImpl.class
+server/MapService.class
+server/ParticipantService.class
+util/Checker.class
+client/Client.class
+util/Log.class
+server/Participant.class
+server/Server.class
+server/Coordinator.class
